@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Controle e Fluxo - JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+<style>
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Estruturas de Controle e Fluxo em JavaScript</h1>
+            <p>Pratique e aprenda resolvendo desafios de código</p>
+        </div>
+
+        <div class="tabs" id="tabs"></div>
+
+        <div class="content">
+            <div class="exercise-header">
+                <h2 id="exercise-title"></h2>
+                <p id="exercise-description"></p>
+            </div>
+
+            <div class="grid">
+                <div class="editor-section">
+                    <div class="section-header">
+                        <span class="section-label">💻 Seu Código:</span>
+                        <button class="reset-btn" onclick="resetCode()">↻ Resetar</button>
+                    </div>
+                    <textarea id="code-editor" spellcheck="false"></textarea>
+                    <div class="button-group">
+                        <button class="btn btn-run" onclick="runTests()">
+                            ▶ Executar Testes
+                        </button>
+                      <!--  <button class="btn btn-solution" onclick="">
+                            Ver Solução
+                        </button> -->
+                    </div>
+                </div>
+
+                <div class="results-section">
+                    <div class="section-header">
+                        <span class="section-label">📊 Resultados dos Testes:</span>
+                    </div>
+                    <div class="results-box" id="results">
+                        <div class="empty-results">
+                            Execute os testes para ver os resultados
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <h3>💡 Dicas:</h3>
+                <ul>
+                    <li>Leia atentamente a descrição do exercício</li>
+                    <li>Complete o código nos locais indicados</li>
+                    <li>Teste seu código clicando em "Executar Testes"</li>
+                    <li>Se travar, clique em "Ver Solução" para aprender</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
