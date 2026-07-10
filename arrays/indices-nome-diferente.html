@@ -1,0 +1,102 @@
+<body>
+
+<div class="card">
+  <h1>Buscar índice de personagem</h1>
+
+  <div class="add-container">
+    <input type="text" id="novoNome" placeholder="Digite um nome...">
+    <button onclick="adicionarPersonagem()">Adicionar</button>
+  </div>
+
+  <div class="array-container" id="lista"></div>
+
+  <select id="seletor"></select>
+  <button onclick="buscarIndice()">Buscar índice</button>
+
+  <div id="resultado"></div>
+</div>
+
+<script>
+  const personagens = [];
+
+  const lista = document.getElementById("lista");
+  const seletor = document.getElementById("seletor");
+  const inputNome = document.getElementById("novoNome");
+
+  function renderizarLista() {
+    lista.innerHTML = "";
+    seletor.innerHTML = "";
+
+    for (let i = 0; i < personagens.length; i++) {
+      const nome = personagens[i];
+
+      const celula = document.createElement("div");
+      celula.className = "celula";
+      celula.id = "item-" + i;
+      celula.innerHTML = `<span class="valor">${nome}</span><span class="idx">[${i}]</span>`;
+      lista.appendChild(celula);
+
+      const opt = document.createElement("option");
+      opt.value = nome;
+      opt.textContent = nome;
+      seletor.appendChild(opt);
+    }
+  }
+
+  function nomeJaExiste(nome) {
+    let i = 0;
+    while (i < personagens.length) {
+      if (personagens[i] === nome) {
+        return true;
+      }
+      i++;
+    }
+    return false;
+  }
+
+  function adicionarPersonagem() {
+    const nome = inputNome.value.trim();
+
+    if (nome === "") {
+      return;
+    }
+
+    if (nomeJaExiste(nome)) {
+      document.getElementById("resultado").textContent =
+        `"${nome}" já existe na lista. Escolha outro nome.`;
+      return;
+    }
+
+    personagens.push(nome);
+    inputNome.value = "";
+    document.getElementById("resultado").textContent = "";
+
+    renderizarLista();
+  }
+
+  function buscarIndice() {
+    const celulas = document.querySelectorAll(".celula");
+    for (let i = 0; i < celulas.length; i++) {
+      celulas[i].classList.remove("destaque");
+    }
+
+    const nomeEscolhido = seletor.value;
+
+    let indice = -1;
+    let i = 0;
+    while (i < personagens.length) {
+      if (personagens[i] === nomeEscolhido) {
+        indice = i;
+        break;
+      }
+      i++;
+    }
+
+    document.getElementById("resultado").textContent =
+      `"${nomeEscolhido}" está no índice ${indice}`;
+
+    if (indice !== -1) {
+      document.getElementById("item-" + indice).classList.add("destaque");
+    }
+  }
+</script>
